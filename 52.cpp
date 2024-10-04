@@ -84,9 +84,11 @@ std::string decrypt(const std::string& cipherText, int shift) {
 }
 
 int findShift(const std::map<char, double>& baseFreq, const std::map<char, double>& cipherFreq) {
-    char mostFrequentBaseChar = std::max_element(baseFreq.begin(), baseFreq.end(), [](const std::pair<char, double>& a, const std::pair<char, double>& b) {return a.second < b.second;})->first;
+    char mostFrequentBaseChar = std::max_element(baseFreq.begin(), baseFreq.end(), [](const std::pair<char, double>& a, const std::pair<char, double>& b) {
+        return a.second < b.second;})->first;
 
-    char mostFrequentCipherChar = std::max_element(cipherFreq.begin(), cipherFreq.end(),[](const std::pair<char, double>& a, const std::pair<char, double>& b) {return a.second < b.second;})->first;
+    char mostFrequentCipherChar = std::max_element(cipherFreq.begin(), cipherFreq.end(),[](const std::pair<char, double>& a, const std::pair<char, double>& b) {
+        return a.second < b.second;})->first;
 
     int shift = (mostFrequentCipherChar - mostFrequentBaseChar + 26) % 26;
     return shift;
